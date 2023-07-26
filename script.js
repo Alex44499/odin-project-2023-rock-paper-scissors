@@ -16,6 +16,9 @@ const USER_LOSES_WITH_PAPER = "You lost. Paper loses to Scissors";
 // Constant for the draw message
 const DRAW = "It is draw";
 
+
+
+
 // Function to get the computer's choice
 function getComputerChoice() {
 	// Generate a random number between 0 and 2
@@ -35,7 +38,7 @@ function getComputerChoice() {
 
 
 // Function to determine the outcome of a Rock, Paper, Scissors game
-function playerSelection(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
 
 	// Normalize player's choice to lowercase for consistent comparison
 	playerSelection = playerSelection.toLowerCase()
@@ -67,17 +70,50 @@ function playerSelection(playerSelection, computerSelection) {
 	}
 }
 
+// Set the number of game rounds
+let GAME_ROUNDS = 5;
+
+// Initialize player and computer scores
+let playerWins = 0;
+let computerWins = 0;
+
+// Main game function
+function game() {
+	// Loop for the number of game rounds
+	for (let i = 0; i < GAME_ROUNDS; i++) {
+		// Get player's choice
+		let playerSelection = prompt("Please mention here you choice (Rock, Paper or Scissors): ");
+
+		// Get computer's choice
+		let computerSelection = getComputerChoice();
+
+		// Play a round and get the result
+		let round = playRound(playerSelection, computerSelection);
+
+		// Update scores based on the round result
+		if (round.includes("won")) {
+			playerWins++;
+		}
+		else if (round.includes("lost")) {
+			computerWins++;
+		}
+		else {
+			// In case of a draw, increment both scores
+			computerWins++;
+			playerWins++;
+		}
+
+		// Log the round result and current scores
+		console.log(round);
+		console.log(`Player score:  ${playerWins}, Computer score: ${computerWins}`);
+	}
+
+	// Log the final scores after all rounds are played
+	console.log(`Game over! Player got: ${playerWins} \n Computer got: ${computerWins}`);
+}
+
+// Start the game
+game();
 
 
-console.log(getComputerChoice())
 
-
-console.log(playerSelection("RoCk", "paper"))
-console.log(playerSelection("scIssors", "rock"))
-console.log(playerSelection("PAPER", "scissors"))
-
-
-
-console.log(playerSelection("RoCk", "scissors"))
-console.log(playerSelection("scIssors", "paper"))
-console.log(playerSelection("PAPER", "rock"))  
