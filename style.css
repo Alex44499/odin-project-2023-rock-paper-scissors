@@ -1,0 +1,156 @@
+/* Applies to all elements on the page for consistent styling */
+* {
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  margin: 0; /* Removes default margins */
+  padding: 0; /* Removes default padding */
+}
+
+/* Sets the background gradient for the body */
+body {
+  /* Fallback for old browsers, a solid red color */
+  background: #dc2424;
+
+  /* Gradient for modern browsers, from blue to red */
+  background: -webkit-linear-gradient(
+    to right,
+    #4a569d,
+    #dc2424
+  ); /* For Chrome 10-25 and Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4a569d,
+    #dc2424
+  ); /* Standard syntax for modern browsers */
+}
+
+/* Styles for the main game container */
+.game-container {
+  display: flex; /* Sets up a Flexbox context */
+  align-items: center; /* Centers items vertically in the container */
+  height: 100vh; /* Full viewport height */
+  flex-direction: column; /* Aligns items vertically */
+}
+
+/* Common styles for all game sections */
+.game-header,
+.computer-choice-options,
+.game-result,
+.player-choice-options,
+.game-footer,
+.choices,
+.player-choices {
+  flex: 1; /* Each section will take an equal amount of space */
+  width: 50%; /* Each section will take up half the width of the container */
+  margin: 1%; /* Adds a small margin around each section */
+
+  /* Center the content of each section */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles for the game header */
+.game-header {
+  font-size: 35px; /* Large font size for the title */
+  color: aliceblue; /* Light text color for contrast against the gradient background */
+}
+
+/* Styles for the computer choice section */
+.computer-choice-options {
+  /* The commented out background color */
+  /* background-color: wheat; */
+
+  border: 5px dashed gold; /* Gold border around the section */
+  flex-direction: column; /* Aligns items vertically */
+}
+
+/* Styles for the text in the computer choice section and player choice section */
+.computer-choice-text,
+.player-choice-text {
+  padding: 10px; /* Adds some space around the text */
+  margin: 0; /* Removes default margins */
+  color: whitesmoke; /* Light text color for readability */
+
+  /* Font styles */
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: bold;
+  font-size: 20px; /* Overrides the previous font-size */
+}
+
+/* Styles for the choices in the computer choice section */
+.choices {
+  padding: 1px;
+  margin: 0px;
+}
+
+/* Styles for the individual computer choices */
+.computer-choice {
+  margin: 5%; /* Adds some space around each choice */
+  padding: 10%; /* Adds some space inside each choice */
+  border: 2px solid black; /* Black border around each choice */
+  background-color: rebeccapurple; /* Purple background for each choice */
+  color: aliceblue; /* Light text color for contrast */
+  font-weight: bold; /* Bold font for emphasis */
+  border-radius: 20px; /* Rounded corners for each choice */
+}
+
+/* Styles for the game result section */
+.game-result {
+  margin: 0; /* Removes default margins */
+  padding: 0; /* Removes default padding */
+  flex: 0.5; /* Takes up half the space of other sections */
+}
+
+/* Styles for the result text */
+.rlt {
+  padding: 1%; /* Adds some space around the text */
+  font-size: 30px; /* Large font size for visibility */
+  margin: 0 5% 0 5%; /* Adds some horizontal space around the text */
+}
+
+/* Styles for the player and computer result numbers */
+.player-result,
+.computer-result {
+  font-size: 50px; /* Very large font size for visibility */
+}
+
+/* Styles for the player result number */
+.player-result {
+  color: white; /* White text for contrast against the green background */
+}
+
+/* Styles for the computer result number */
+.computer-result {
+  color: gold; /* Gold text for contrast against the green background */
+}
+
+/* Styles for the player choice section */
+.player-choice-options {
+  /* The commented out background color */
+  /* background-color: white; */
+
+  flex-direction: column; /* Aligns items vertically */
+  border: 5px dashed white; /* White border around the section */
+}
+
+/* Styles for the player choice buttons */
+.btn {
+  margin: 5%; /* Adds some space around each button */
+  padding: 10%; /* Adds some space inside each button */
+  border: 2px solid black; /* Black border around each button */
+  background-color: chocolate; /* Brown background for each button */
+  color: aliceblue; /* Light text color for contrast */
+  font-weight: bold; /* Bold font for emphasis */
+  border-radius: 20px; /* Rounded corners for each button */
+}
+
+/* Styles for the player choice buttons when hovered over */
+.btn:hover {
+  background-color: goldenrod; /* Changes the background to gold when hovered over */
+}
+
+/* Styles for the footer */
+.game-footer {
+  flex: 0.25; /* Takes up a quarter of the space of other sections */
+  color: wheat; /* Wheat-colored text for contrast against the gradient background */
+}

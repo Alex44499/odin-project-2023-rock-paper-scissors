@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and responsive design -->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Linking external CSS and JavaScript files -->
 	<link rel="stylesheet" href="style.css">
 	<script src="script.js"></script>
-	<title>Document</title>
+
+    <!-- Title of the document -->
+	<title>Rock Paper Scissors Game</title>
 </head>
-	<h1>Rock Paper Scissors</h1>
 <body>
-	
+    <!-- Main container for the game -->
+	<div class="game-container">
+
+        <!-- Header section for game title -->
+		<header class="game-header"> Let's play: "Rock Paper Scissors"</header>
+		
+        <!-- Section for displaying the computer's choice -->
+		<div class="computer-choice-options">
+
+            <!-- Text indicating the computer's choice -->
+			<p class="computer-choice-text">Computer choice is...</p>
+
+            <!-- Container for the possible choices -->
+			<div class="choices">
+				<div class="computer-choice rock">Rock</div>
+				<div class="computer-choice paper">Paper</div>
+				<div class="computer-choice scissors">Scissors</div>
+			</div>
+		</div>
+		
+        <!-- Section for displaying the game results -->
+		<div class="game-result">
+			<div class="rlt player-result">0</div>
+			<div class="rlt result-option">Win Lost Tie</div>
+			<div class="rlt computer-result">0</div>
+		</div>
+		
+        <!-- Section for the player to make a choice -->
+		<div class="player-choice-options">
+
+            <!-- Text prompting the player to make a choice -->
+			<p class="player-choice-text">Please make your choice first...</p>
+
+            <!-- Container for the player's choices -->
+			<div class="player-choices">
+				<button class="btn btn-rock">Rock</button>
+				<button class="btn btn-paper">Paper</button>
+				<button class="btn btn-scissors">Scissors</button>
+			</div>
+		</div>
+
+        <!-- Footer section -->
+		<footer class="game-footer"> Developed by AS </footer>
+	</div>
 </body>
 </html>
