@@ -57,9 +57,6 @@ body {
 
 /* Styles for the computer choice section */
 .computer-choice-options {
-  /* The commented out background color */
-  /* background-color: wheat; */
-
   border: 5px dashed gold; /* Gold border around the section */
   flex-direction: column; /* Aligns items vertically */
 }
@@ -81,18 +78,28 @@ body {
 .choices {
   padding: 1px;
   margin: 0px;
+
+ 
 }
 
 /* Styles for the individual computer choices */
 .computer-choice {
   margin: 5%; /* Adds some space around each choice */
-  padding: 10%; /* Adds some space inside each choice */
+  padding: 10% 15%; /* Adds some space inside each choice */
   border: 2px solid black; /* Black border around each choice */
   background-color: rebeccapurple; /* Purple background for each choice */
   color: aliceblue; /* Light text color for contrast */
   font-weight: bold; /* Bold font for emphasis */
   border-radius: 20px; /* Rounded corners for each choice */
-}
+  overflow: hidden; /* hides any content that goes outside the box */
+  display: flex;
+  justify-content: center; /* horizontally center the content */
+  }
+
+
+
+  
+
 
 /* Styles for the game result section */
 .game-result {
@@ -104,7 +111,7 @@ body {
 /* Styles for the result text */
 .rlt {
   padding: 1%; /* Adds some space around the text */
-  font-size: 30px; /* Large font size for visibility */
+  font-size: 25px; /* Large font size for visibility */
   margin: 0 5% 0 5%; /* Adds some horizontal space around the text */
 }
 
@@ -136,12 +143,15 @@ body {
 /* Styles for the player choice buttons */
 .btn {
   margin: 5%; /* Adds some space around each button */
-  padding: 10%; /* Adds some space inside each button */
+  padding: 10% 15%; /* Adds some space inside each button */
   border: 2px solid black; /* Black border around each button */
   background-color: chocolate; /* Brown background for each button */
   color: aliceblue; /* Light text color for contrast */
   font-weight: bold; /* Bold font for emphasis */
   border-radius: 20px; /* Rounded corners for each button */
+  overflow: hidden; 
+  display: flex;
+  justify-content: center; 
 }
 
 /* Styles for the player choice buttons when hovered over */
@@ -154,3 +164,4 @@ body {
   flex: 0.25; /* Takes up a quarter of the space of other sections */
   color: wheat; /* Wheat-colored text for contrast against the gradient background */
 }
+
