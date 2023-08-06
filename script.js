@@ -1,119 +1,138 @@
-// // Constants for the possible choices
-// const PAPER = "paper";
-// const ROCK = "rock";
-// const SCISSORS = "scissors";
+// Selecting the elements to display player and computer results and the result information
+const playerResult = document.querySelector('.player-result')
+const computerResult = document.querySelector('.computer-result')
+const resultInformation = document.querySelector('.result-option')
 
-// // Constants for the win messages
-// const USER_WINS_WITH_ROCK = "You won. Rock beats Scissors";
-// const USER_WINS_WITH_SCISSORS = "You won. Scissors beats Paper";
-// const USER_WINS_WITH_PAPER = "You won. Paper beats Rock";
+// Constants for the possible choices in the game
+const PAPER = "paper";
+const ROCK = "rock";
+const SCISSORS = "scissors";
 
-// // Constants for the lose messages
-// const USER_LOSES_WITH_ROCK = "You lost. Rock loses to Paper";
-// const USER_LOSES_WITH_SCISSORS = "You lost. Scissors lose to Rock";
-// const USER_LOSES_WITH_PAPER = "You lost. Paper loses to Scissors";
+// Constants for the win messages
+const USER_WINS_WITH_ROCK = "You won. Rock beats Scissors";
+const USER_WINS_WITH_SCISSORS = "You won. Scissors beats Paper";
+const USER_WINS_WITH_PAPER = "You won. Paper beats Rock";
+const USER_WON = "You won";
 
-// // Constant for the draw message
-// const DRAW = "It is draw";
+// Constants for the lose messages
+const USER_LOSES_WITH_ROCK = "You lost. Rock loses to Paper";
+const USER_LOSES_WITH_SCISSORS = "You lost. Scissors lose to Rock";
+const USER_LOSES_WITH_PAPER = "You lost. Paper loses to Scissors";
+const USER_LOST = "You lost";
 
+// Constant for the draw message
+const DRAW = "It is draw";
 
+// Messages for end of game
+const USED_END_GAME = "You've won the game!"
+const COMPUTER_END_GAME = "Computer has won the game."
 
+// Selecting the computer choices elements
+const computerChoiceRock = document.querySelector('.rock');
+const computerChoicePaper = document.querySelector('.paper');
+const computerChoiceScissors = document.querySelector('.scissors');
 
-// // Function to get the computer's choice
-// function getComputerChoice() {
-// 	// Generate a random number between 0 and 2
-// 	let randomizationOfChoice = (Math.floor(Math.random() * 3));
+// Function to reset the background of the computer's choices
+function resetComputerChoiceBackground() {
+	computerChoicePaper.style.background = ''; // resets to original style
+	computerChoiceRock.style.background = ''; // resets to original style
+	computerChoiceScissors.style.background = ''; // resets to original style
+}
 
-// 	// Based on the random number, return the corresponding choice
-// 	if (randomizationOfChoice === 0) {
-// 		return PAPER;
-// 	}
-// 	else if (randomizationOfChoice === 1) {
-// 		return ROCK;
-// 	}
-// 	else {
-// 		return SCISSORS;
-// 	}
-// }
+// Function to determine the computer's choice
+function getComputerChoice() {
 
+	// Reset the background color of computer choices 
+	resetComputerChoiceBackground()
 
-// // Function to determine the outcome of a Rock, Paper, Scissors game
-// function playRound(playerSelection, computerSelection) {
+	// Generate a random number between 0 and 2
+	let randomizationOfChoice = Math.floor(Math.random() * 3);
 
-// 	// Normalize player's choice to lowercase for consistent comparison
-// 	playerSelection = playerSelection.toLowerCase()
+	// Based on the random number, change the background color of the corresponding choice and return the choice
+	if (randomizationOfChoice === 0) {
+		computerChoicePaper.style.background = 'blueviolet'; 
+		return PAPER;
+	} else if (randomizationOfChoice === 1) {
+		computerChoiceRock.style.background = 'blueviolet'; 
+		return ROCK;
+	} else {
+		computerChoiceScissors.style.background = 'blueviolet';
+		return SCISSORS;
+	}
+}
 
-// 	// Check for a draw scenario - when player's choice matches computer's choice
-// 	if (playerSelection === computerSelection) {
-// 		return DRAW; // Return the DRAW constant
-// 	}
+// Function to determine the outcome of a Rock, Paper, Scissors game
+function playRound(playerSelection, computerSelection) {
 
-// 	// Determine the game outcome based on player's choice
-// 	switch (playerSelection) {
-// 		// Player chose ROCK
-// 		case ROCK:
-// 			// If computer chose PAPER, player loses (Paper covers Rock)
-// 			// If computer chose SCISSORS, player wins (Rock crushes Scissors)
-// 			return computerSelection === PAPER ? USER_LOSES_WITH_ROCK : USER_WINS_WITH_ROCK;
+	// Normalize player's choice to lowercase for consistent comparison
+	playerSelection = playerSelection.toLowerCase()
 
-// 		// Player chose SCISSORS
-// 		case SCISSORS:
-// 			// If computer chose ROCK, player loses (Rock crushes Scissors)
-// 			// If computer chose PAPER, player wins (Scissors cut Paper)
-// 			return computerSelection === ROCK ? USER_LOSES_WITH_SCISSORS : USER_WINS_WITH_SCISSORS;
+	// Check for a draw scenario - when player's choice matches computer's choice
+	if (playerSelection === computerSelection) {
+		return DRAW; 
+	}
 
-// 		// Player chose PAPER
-// 		case PAPER:
-// 			// If computer chose SCISSORS, player loses (Scissors cut Paper)
-// 			// If computer chose ROCK, player wins (Paper covers Rock)
-// 			return computerSelection === SCISSORS ? USER_LOSES_WITH_PAPER : USER_WINS_WITH_PAPER;
-// 	}
-// }
+	// Determine the game outcome based on player's choice
+	switch (playerSelection) {
+		case ROCK:
+			return computerSelection === PAPER ? USER_LOSES_WITH_ROCK : USER_WINS_WITH_ROCK;
+		case SCISSORS:
+			return computerSelection === ROCK ? USER_LOSES_WITH_SCISSORS : USER_WINS_WITH_SCISSORS;
+		case PAPER:
+			return computerSelection === SCISSORS ? USER_LOSES_WITH_PAPER : USER_WINS_WITH_PAPER;
+	}
+}
 
-// // Set the number of game rounds
-// let GAME_ROUNDS = 5;
+// Initializing player and computer scores
+let playerWins = 0;
+let computerWins = 0;
 
-// // Initialize player and computer scores
-// let playerWins = 0;
-// let computerWins = 0;
+// Initializing game over flag
+let gameOver = false;
 
-// // Main game function
-// function game() {
-// 	// Loop for the number of game rounds
-// 	for (let i = 0; i < GAME_ROUNDS; i++) {
-// 		// Get player's choice
-// 		let playerSelection = prompt("Please mention here you choice (Rock, Paper or Scissors): ");
+// Function to update the scores and check if game is over
+function game(round) {
+	// If the game is over, reset the scores and update the game status
+	if (gameOver) {
+		playerWins = 0;
+		computerWins = 0;
+		gameOver = false;
+	}
 
-// 		// Get computer's choice
-// 		let computerSelection = getComputerChoice();
+	// Update scores based on the round result
+	if (round.includes("won")) {
+		playerWins++;
+		resultInformation.textContent = USER_WON;
+	} else if (round.includes("lost")) {
+		computerWins++;
+		resultInformation.textContent = USER_LOST;
+	} else {
+		resultInformation.textContent = DRAW;
+	}
 
-// 		// Play a round and get the result
-// 		let round = playRound(playerSelection, computerSelection);
+	// Check if game is over
+	if (playerWins === 5) {
+		resultInformation.textContent = USED_END_GAME;
+		gameOver = true;
+	} else if (computerWins === 5) {
+		resultInformation.textContent = COMPUTER_END_GAME;
+		gameOver = true;
+	}
 
-// 		// Update scores based on the round result
-// 		if (round.includes("won")) {
-// 			playerWins++;
-// 		}
-// 		else if (round.includes("lost")) {
-// 			computerWins++;
-// 		}
-// 		else {
-// 			// In case of a draw, increment both scores
-// 			computerWins++;
-// 			playerWins++;
-// 		}
+	// Update the score display
+	playerResult.textContent = playerWins;
+	computerResult.textContent = computerWins;
+}
 
-// 		// Log the round result and current scores
-// 		console.log(round);
-// 		console.log(`Player score:  ${playerWins}, Computer score: ${computerWins}`);
-// 	}
+// Select all the buttons 
+const buttons = document.querySelectorAll('button')
 
-// 	// Log the final scores after all rounds are played
-// 	console.log(`Game over! Player got: ${playerWins} \n Computer got: ${computerWins}`);
-// }
-
-// // Start the game
-// game();
-
-
-
+// For each button, when clicked, get the player and computer choices, determine the round result and update the game status
+buttons.forEach((button) => {
+	button.addEventListener('click', () => {
+		let playerSelection = button.textContent
+		let computerSelection = getComputerChoice()
+		let round = playRound(playerSelection, computerSelection)
+		game(round)
+	})
+})
